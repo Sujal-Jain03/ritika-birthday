@@ -1,0 +1,369 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#ritikaName {
+  color: #ff0000;
+}
+.birthday-message {
+  background: linear-gradient(to right, #00c853, #ff1744); /* green to red */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #ffd1dc;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: hidden;
+    padding: 2rem 1rem;
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    z-index: 10;
+    max-width: 900px;
+    width: 100%;
+}
+
+/* Main Heading */
+.main-heading {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: #000;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+.name-highlight {
+    color: #ff6b6b;
+}
+
+/* Love Message */
+.love-message {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+    color: #000;
+    font-weight: 500;
+}
+
+/* Countdown */
+.countdown {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    padding: 2.5rem 2rem;
+    border-radius: 25px;
+    min-width: 140px;
+    box-shadow: 
+        0 20px 40px rgba(255, 0, 0, 0.2),
+        0 10px 20px rgba(0, 0, 0, 0.15),
+        inset 0 -2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+}
+
+.time-box:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 
+        0 25px 50px rgba(255, 0, 0, 0.3),
+        0 15px 30px rgba(0, 0, 0, 0.2),
+        inset 0 -2px 10px rgba(0, 0, 0, 0.05);
+    animation: none;
+}
+
+.time-box::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ff6b6b);
+    border-radius: 25px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.time-box:hover::before {
+    opacity: 1;
+}
+
+.time-box span {
+    font-size: 3.5rem;
+    font-weight: 900;
+    display: block;
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 10px rgba(255, 0, 0, 0.3);
+    letter-spacing: -2px;
+}
+
+.time-box p {
+    font-size: 1.1rem;
+    margin-top: 1.2rem;
+    color: #000;
+    font-weight: normal;
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Midnight Message */
+.midnight-message {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #9b59b6 0%, #ff69b4 50%, #9b59b6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 600;
+    text-shadow: none;
+    animation: shimmer 3s ease-in-out infinite;
+    background-size: 200% auto;
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        background-position: 0% center;
+    }
+    50% {
+        background-position: 100% center;
+    }
+}
+
+/* Magic Message */
+.magic-message {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    color: #000;
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* Celebrate Button */
+.celebrate-btn {
+    display: inline-block;
+    padding: 1.2rem 3.5rem;
+    background: linear-gradient(135deg, #ff6b6b, #ff5252);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    transition: all 0.3s;
+    box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+.disabled-link {
+    pointer-events: none;     /* make it unclickable */
+    opacity: 0.6;             /* slight fade to show it's locked */
+    cursor: not-allowed;      /* disabled cursor */
+}
+.celebrate-hint {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 600;
+  animation: hint-bounce 1.2s ease-in-out infinite;
+  visibility: hidden;   /* hidden by default */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.celebrate-hint-text {
+  background: #ffffff;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.celebrate-hint-arrow {
+  font-size: 1.2rem; /* small emoji size curly arrow */
+}
+
+/* when active (JS will add this) */
+.celebrate-hint.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+@keyframes hint-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+
+
+.celebrate-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.celebrate-btn:hover::before {
+    left: 100%;
+}
+
+.celebrate-btn:hover {
+    background: linear-gradient(135deg, #ff5252, #ff3838);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 20px 45px rgba(255, 107, 107, 0.6);
+}
+
+/* Popup Styles */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup.active {
+    display: flex;
+}
+
+.popup-content {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    animation: popupBounce 0.5s;
+}
+
+@keyframes popupBounce {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.popup-content h2 {
+    color: #667eea;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.popup-content p {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Balloons Emoji Container */
+#balloons-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Balloon Emoji Animation */
+.balloon-emoji {
+    position: absolute;
+    bottom: -80px;
+    font-size: 3rem;
+    animation: floatBalloon 8s ease-in infinite;
+    opacity: 0.9;
+}
+
+@keyframes floatBalloon {
+    0% {
+        bottom: -80px;
+        opacity: 0.9;
+        transform: translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateX(30px) rotate(-15deg);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(-10px) rotate(5deg);
+    }
+    75% {
+        transform: translateX(20px) rotate(-10deg);
+    }
+    100% {
+        bottom: 110%;
+        opacity: 0;
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+/* Old Balloon Shape Animation (kept for popup) */
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    width: 50px;
+    height: 70px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: float 6s ease-in infinite;
+}
+
+@keyframes float {
+    0% {
+        bottom: -100px;
+        opacity: 1;
+    }
+    100% {
+        bottom: 110%;
+        opacity: 0;
+    }
+}
+
+.balloon:nth-child(1) { background: #ff6b6b; left: 10%; animation-delay: 0s; }
+.balloon:nth-child(2) { background: #4ecdc4; left: 25%; animation-delay: 0.5s; }
+.balloon:nth-child(3) { background: #ffe66d; left: 40%; animation-delay: 1s; }
+.balloon:nth-child(4) { background: #a8e6cf; left: 55%; animation-delay: 1.5s; }
+.balloon:nth-child(5) { background: #ff8c94; left: 70%; animation-delay: 2s; }

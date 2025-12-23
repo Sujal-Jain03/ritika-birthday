@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ritika's Birthday Countdown</title>
+    <link rel="stylesheet" href="css/countdown.css">
+</head>
+<body>
+    <!-- Balloons Container -->
+    <div id="balloons-container"></div>
+
+    <div class="container">
+        <h1 id="mainHeading" class="main-heading">
+  Counting down to <span id="ritikaName" class="name-highlight">Ritika's</span> special day 🎂
+</h1>
+
+        <p class="love-message">You mean more to me than words can ever explain 💖</p>
+        
+        <div id="countdown" class="countdown">
+            <div class="time-box">
+                <span id="days">00</span>
+                <p>Days</p>
+            </div>
+            <div class="time-box">
+                <span id="hours">00</span>
+                <p>Hours</p>
+            </div>
+            <div class="time-box">
+                <span id="minutes">00</span>
+                <p>Minutes</p>
+            </div>
+            <div class="time-box">
+                <span id="seconds">00</span>
+                <p>Seconds</p>
+            </div>
+        </div>
+
+        <p class="midnight-message">✨ A special celebration awaits you at midnight... ✨</p>
+        <p class="magic-message">Something magical is about to unfold</p>
+
+        <!-- Button (always visible now) -->
+        <a href="cards.html" id="celebrateBtn" class="celebrate-btn disabled-link">Let's Celebrate!</a>
+        <div id="celebrateHint" class="celebrate-hint">
+  <span class="celebrate-hint-text">Click here</span>
+  <span class="celebrate-hint-arrow"></span>
+</div>
+
+
+    </div>
+
+    <!-- Birthday Popup (for when countdown ends) -->
+    <div id="birthdayPopup" class="popup">
+        <div class="popup-content">
+            <h2>🎉 It's Your Birthday! 🎂</h2>
+            <p>Happy Birthday Ritika! 🎈🎊</p>
+            <a href="cards.html" class="celebrate-btn">Let's Celebrate!</a>
+        </div>
+    </div>
+
+    <script src="js/countdown.js"></script>
+</body>
+</html>
